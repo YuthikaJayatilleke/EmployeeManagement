@@ -1,0 +1,42 @@
+.hedars {
+  font-size: medium;
+  text-align: center;
+  padding: 0%;
+  background: green;
+  color: white !important;
+}
+
+.mat-header-cell {
+  color: black;
+  text-align: center;
+  justify-content: center;
+}
+
+.mat-cell {
+  text-align: center;
+  justify-content: center;
+}
+
+.mat-icon {
+  font-size: 25px;
+}
+
+.table-sell {
+  font-size: 15px;
+  padding: 0%;
+}
+.mat-icon-delete {
+  color: olive;
+}
+
+.mat-icon-edit {
+  color: green;
+}
+
+.mat-icon-show {
+  color: green;
+}
+.mat-add-dep-btn {
+  background-color: green;
+  color: white;
+}

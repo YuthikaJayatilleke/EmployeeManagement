@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-10"></div>
+      <div class="col-sm-2">
+        <button
+          class="mt-2 mat-add-dep-btn"
+          mat-raised-button
+          (click)="onAdd()"
+        >
+          Add Department
+        </button>
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2">
+          <mat-form-field>
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="Filter"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div style="overflow: auto">
+      <div class="mat-elevation-z8">
+        <mat-table [dataSource]="listDepartmentData" matSort>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          <ng-container matColumnDef="options">
+            <mat-header-cell class="hedars" *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="onEdit(row)">
+                <mat-icon class="mat-icon-edit">edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onDelete(row.id)">
+                <mat-icon class="mat-icon-delete">delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Id</mat-header-cell
+            >
+            <mat-header-cell *matCellDef="let elemenet">{{
+              elemenet.id
+            }}</mat-header-cell>
+          </ng-container>
+          <ng-container matColumnDef="code">
+            <mat-header-cell class="hedars" *matHeaderCellDef mat-sort-header
+              >Department Code</mat-header-cell
+            >
+            <mat-header-cell class="table-sell" *matCellDef="let elemenet">{{
+              elemenet.code
+            }}</mat-header-cell>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <mat-header-cell class="hedars" *matHeaderCellDef mat-sort-header
+              >Department Name</mat-header-cell
+            >
+            <mat-header-cell class="table-sell" *matCellDef="let elemenet">{{
+              elemenet.name
+            }}</mat-header-cell>
+          </ng-container>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+</div>

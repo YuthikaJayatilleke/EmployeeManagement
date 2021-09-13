@@ -1,0 +1,14 @@
+.login-box {
+  margin: auto;
+  margin-top: 15%;
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.login-btn {
+  background-color: green;
+}
+
+.error-messages {
+  text-align: center;
+}

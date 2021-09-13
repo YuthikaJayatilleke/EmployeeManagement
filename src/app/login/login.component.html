@@ -1,0 +1,63 @@
+<div class="login-wrapper">
+  <div class="login-box">
+    <div class="card">
+      <div class="card-body">
+        <form
+          class="form-signin"
+          (ngSubmit)="onSubmit(signInForm)"
+          #signInForm="ngForm"
+        >
+          <h3 style="text-align: center">XYZ (Pvt) Ltd</h3>
+          <h5 style="text-align: center">Employee Management System</h5>
+          <br />
+          <label for="inputlogin" class="sr-only">Login </label>
+          <input
+            type="text"
+            id="inputLogin"
+            class="form-control"
+            name="login"
+            placeholder="Login"
+            ngModel
+            required
+            autofocus
+          />
+          <br />
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input
+            type="password"
+            id="inputPassword"
+            class="form-control"
+            name="password"
+            placeholder="Password"
+            autocomplete="on"
+            ngModel
+            required
+          />
+          <br />
+          <button
+            class="btn btn-lg btn-success btn-block login-btn"
+            type="submit"
+          >
+            Sign in
+          </button>
+          <br />
+          <div
+            class="alert alert-danger error-messages"
+            role="alert"
+            *ngIf="isFormValid"
+          >
+            Please Enter Username and Password.
+          </div>
+          <div
+            class="alert alert-danger error-messages"
+            role="alert"
+            title="Error"
+            *ngIf="areCredentialsInvalid"
+          >
+            Invalid Username or Password.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,272 @@
+<div style="background-color: green" class="d-flex justify-content-between">
+  <h5 class="mat-add-dep-text" style="color: white">New Employee</h5>
+  <button mat-button (click)="onClose()"><mat-icon>close</mat-icon></button>
+</div>
+<br />
+<div style="overflow: auto; height: 800px">
+  <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <div>
+            <h6>Employee Number *</h6>
+          </div>
+          <div class="mt-10 input-group">
+            <input
+              required
+              minlength="2"
+              type="text"
+              class="form-control"
+              name="code"
+              #code="ngModel"
+              [(ngModel)]="service.formData.code"
+            />
+          </div>
+          <div
+            class="text-left text-danger"
+            *ngIf="code.invalid && code.touched"
+          >
+            Please enter Employee Number
+          </div>
+          <h6>First Name *</h6>
+          <div class="mt-10 input-group">
+            <input
+              required
+              minlength="2"
+              type="text"
+              class="form-control"
+              name="firstName"
+              #firstName="ngModel"
+              [(ngModel)]="service.formData.firstName"
+            />
+          </div>
+          <div
+            class="text-left text-danger"
+            *ngIf="firstName.invalid && firstName.touched"
+          >
+            Please enter First Name
+          </div>
+          <h6>Last Name</h6>
+          <div class="mt-10 input-group">
+            <input
+              minlength="2"
+              type="text"
+              class="form-control"
+              name="lastName"
+              #lastName="ngModel"
+              [(ngModel)]="service.formData.lastName"
+            />
+          </div>
+          <h6>NIC Number *</h6>
+          <div class="mt-10 input-group">
+            <input
+              required
+              minlength="2"
+              type="text"
+              class="form-control"
+              name="nic"
+              #nic="ngModel"
+              [pattern]="nicPattern1"
+              [(ngModel)]="service.formData.nic"
+            />
+          </div>
+          <div class="text-left text-danger" *ngIf="nic.invalid && nic.touched">
+            Invalid NIC Number
+          </div>
+          <h6>Date of Birth</h6>
+          <div class="mt-10 input-group">
+            <input
+              [matDatepicker]="picker"
+              class="form-control"
+              type="text"
+              name="dob"
+              #Name="ngModel"
+              [(ngModel)]="service.formData.dob"
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+          <h6>Gender</h6>
+          <div class="mt-10 input-group">
+            <div class="col-sm">
+              <label class="radio-inline">
+                <input
+                  type="radio"
+                  value="male"
+                  name="gender"
+                  [(ngModel)]="service.formData.gender"
+                />&nbsp;&nbsp;&nbsp;&nbsp;Male</label
+              >
+            </div>
+            <div class="col-sm">
+              <label class="radio-inline"
+                ><input
+                  type="radio"
+                  value="female"
+                  name="gender"
+                  [(ngModel)]="service.formData.gender"
+                />&nbsp;&nbsp;&nbsp;&nbsp;Female</label
+              >
+            </div>
+            <div class="col-sm"></div>
+          </div>
+          <br />
+          <h6>Department *</h6>
+          <div class="mt-10 input-group">
+            <div class="input-group-prepend"></div>
+            <select
+              required
+              type="text"
+              class="form-control"
+              name="department"
+              #department="ngModel"
+              [(ngModel)]="service.formData.department"
+            >
+              <option
+                *ngFor="let departmentName of departments"
+                [value]="departmentName"
+              >
+                {{ departmentName }}
+              </option>
+            </select>
+          </div>
+          <div
+            class="text-left text-danger"
+            *ngIf="department.invalid && department.touched"
+          >
+            Please enter Department
+          </div>
+          <h6>Designation *</h6>
+          <div class="mt-10 input-group">
+            <input
+              required
+              minlength="2"
+              type="text"
+              class="form-control"
+              name="designation"
+              #designation="ngModel"
+              [(ngModel)]="service.formData.designation"
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <label class="checkbox-inline">
+              <input
+                class="emp-check-box"
+                type="checkbox"
+                name="isActive"
+                [(ngModel)]="service.formData.isActive"
+              />
+              Current Employee
+            </label>
+          </div>
+          <h6>Mobile Number</h6>
+          <div class="mt-10 input-group">
+            <div class="input-group-prepend"></div>
+            <input
+              minlength="2"
+              type="text"
+              class="form-control"
+              name="mobileNo"
+              #mobileNo="ngModel"
+              [pattern]="mobileNumberPattern"
+              [(ngModel)]="service.formData.mobileNo"
+            />
+          </div>
+          <div class="text-left text-danger" *ngIf="mobileNo.errors?.pattern">
+            Invalid Mobile number
+          </div>
+          <h6>E-mail</h6>
+          <div class="mt-10 input-group">
+            <input
+              minlength="2"
+              type="text"
+              class="form-control"
+              name="email"
+              #email="ngModel"
+              [pattern]="emailPattern"
+              [(ngModel)]="service.formData.email"
+            />
+          </div>
+          <div class="text-left text-danger" *ngIf="email.errors?.pattern">
+            Invalid E-mail Address
+          </div>
+        </div>
+
+        <div class="col-sm">
+          <div class="container">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title></mat-card-title>
+              </mat-card-header>
+              <img mat-card-image [src]="url" alt="Photo of a Employee" />
+              <mat-card-actions>
+                <input
+                  type="file"
+                  (change)="selectFile($event)"
+                  name="imagePath"
+                  [(ngModel)]="service.formData.imagePath"
+                />
+              </mat-card-actions>
+            </mat-card>
+          </div>
+          <br />
+          <br />
+          <h6>PF Number</h6>
+          <div class="mt-10 input-group">
+            <input
+              minlength="2"
+              type="text"
+              class="form-control"
+              name="pfNumber"
+              #pfNumber="ngModel"
+              [(ngModel)]="service.formData.pfNumber"
+            />
+          </div>
+          <h6>Date Joined</h6>
+          <div class="mt-10 input-group">
+            <input
+              [matDatepicker]="picker1"
+              class="form-control"
+              type="text"
+              name="dateJoined"
+              #picker="ngModel"
+              [(ngModel)]="service.formData.dateJoined"
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker1">
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+          <br />
+          <h6>Address</h6>
+          <div class="mt-10 input-group">
+            <textarea
+              matInput
+              aria-multiline="true"
+              type="text"
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="5"
+              cdkAutosizeMaxRows="5"
+              class="form-control"
+              name="address"
+              #address="ngModel"
+              [(ngModel)]="service.formData.address"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <button
+        class="mt-4 mat-add-dep-btn"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Add Employee
+      </button>
+    </div>
+  </form>
+</div>

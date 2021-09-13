@@ -1,0 +1,67 @@
+{
+  "Departments": [
+    {
+      "id": 1,
+      "code": "D001",
+      "name": "Admin"
+    },
+    {
+      "id": 2,
+      "code": "D002",
+      "name": "IT"
+    },
+    {
+      "id": 4,
+      "code": "D003",
+      "name": "Finance"
+    }
+  ],
+  "Employees": [
+    {
+      "id": 3,
+      "code": "EP006",
+      "firstName": "Saman k",
+      "lastName": "Kumara",
+      "nic": "950000000v",
+      "dob": "1995-06-20T18:30:00.000Z",
+      "gender": "",
+      "department": "IT",
+      "designation": "Software Engineer",
+      "isActive": true,
+      "mobileNo": "0711548415",
+      "email": "saman@gmail.com",
+      "imagePath": "",
+      "pfNumber": "PF006",
+      "dateJoined": "2021-08-01T18:30:00.000Z",
+      "address": "No 4,\nGall Road ,\nColombo 4"
+    },
+    {
+      "code": "EP0015",
+      "firstName": "Pradeep",
+      "lastName": "Kumara",
+      "nic": "908911472V",
+      "dob": "1992-02-03T18:30:00.000Z",
+      "gender": "male",
+      "department": "Finance",
+      "designation": "Manager",
+      "isActive": true,
+      "mobileNo": "0718645912",
+      "email": "yj@gmail.com",
+      "imagePath": "C:\\fakepath\\Add Employe button disable.png",
+      "pfNumber": "PF00457",
+      "dateJoined": "2021-08-31T18:30:00.000Z",
+      "address": "NO 04\nGale Road ",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

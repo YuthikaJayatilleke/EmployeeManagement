@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-10"></div>
+      <div class="col-sm-2">
+        <button
+          class="mt-2 mat-add-dep-btn"
+          mat-raised-button
+          (click)="onAdd()"
+        >
+          Add Employee
+        </button>
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-2">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filer" />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+          <mat-form-field>
+            <input
+              matInput
+              (keyup)="applyFilterByName($event)"
+              placeholder="Search by name"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+          <mat-form-field>
+            <input
+              matInput
+              (keyup)="applyFilterByEmail($event)"
+              placeholder="Search by email"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="overflow: auto">
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="listEmployeeData" matSort>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        <ng-container matColumnDef="options">
+          <mat-header-cell class="hedars" *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-icon-button (click)="onShow(row)">
+              <mat-icon class="mat-icon-show">visibility</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onEdit(row)">
+              <mat-icon class="mat-icon-edit">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onDelete(row.id)">
+              <mat-icon class="mat-icon-delete">delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Id</mat-header-cell
+          >
+          <mat-header-cell *matCellDef="let elemenet">{{
+            elemenet.id
+          }}</mat-header-cell>
+        </ng-container>
+        <ng-container matColumnDef="code">
+          <mat-header-cell class="hedars" *matHeaderCellDef mat-sort-header
+            >Employee Code</mat-header-cell
+          >
+          <mat-header-cell class="table-sell" *matCellDef="let elemenet">{{
+            elemenet.code
+          }}</mat-header-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <mat-header-cell class="hedars" *matHeaderCellDef mat-sort-header
+            >Employee Name</mat-header-cell
+          >
+          <mat-header-cell class="table-sell" *matCellDef="let elemenet">{{
+            elemenet.firstName + " " + elemenet.lastName
+          }}</mat-header-cell>
+        </ng-container>
+        <ng-container matColumnDef="mobileNo">
+          <mat-header-cell class="hedars" *matHeaderCellDef mat-sort-header
+            >Mobile Number</mat-header-cell
+          >
+          <mat-header-cell class="table-sell" *matCellDef="let elemenet">{{
+            elemenet.mobileNo
+          }}</mat-header-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <mat-header-cell class="hedars" *matHeaderCellDef mat-sort-header
+            >E-Mail</mat-header-cell
+          >
+          <mat-header-cell class="table-sell" *matCellDef="let elemenet">{{
+            elemenet.email
+          }}</mat-header-cell>
+        </ng-container>
+      </mat-table>
+    </div>
+  </div>
+</div>

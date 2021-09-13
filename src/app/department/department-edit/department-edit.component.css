@@ -1,0 +1,18 @@
+.mat-add-dep-btn {
+  background-color: green;
+  color: white;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+.mat-add-dep-text {
+  text-align: center !important;
+  padding-left: 40px;
+  margin-top: 6px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}

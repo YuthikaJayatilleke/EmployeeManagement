@@ -1,0 +1,64 @@
+<div style="background-color: green" class="d-flex justify-content-between">
+  <h5 class="mat-add-dep-text" style="color: white">New Department</h5>
+  <button mat-button (click)="onClose()"><mat-icon>close</mat-icon></button>
+</div>
+<div style="overflow: auto; height: 300px">
+  <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <div class="mt-4 input-group">
+      <input
+        hidden="true"
+        readonly
+        minlength="2"
+        type="text"
+        class="form-control"
+        name="id"
+        #Name="ngModel"
+        [(ngModel)]="service.formData.id"
+      />
+    </div>
+    <div>
+      <h6>Department Code *</h6>
+    </div>
+    <div class="mt-2 input-group">
+      <input
+        required
+        minlength="2"
+        type="text"
+        class="form-control"
+        name="code"
+        #code="ngModel"
+        [(ngModel)]="service.formData.code"
+      />
+    </div>
+    <div class="text-left text-danger" *ngIf="code.invalid && code.touched">
+      Please enter Department Code
+    </div>
+    <br />
+    <div>
+      <h6>Department Name *</h6>
+    </div>
+    <div class="mt-4 input-group">
+      <input
+        required
+        minlength="2"
+        type="text"
+        class="form-control"
+        name="name"
+        #Name="ngModel"
+        [(ngModel)]="service.formData.name"
+      />
+    </div>
+    <div class="text-left text-danger" *ngIf="Name.invalid && Name.touched">
+      Please enter Department Name
+    </div>
+    <button
+      class="mt-4 mat-add-dep-btn"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      Add Department
+    </button>
+  </form>
+</div>
